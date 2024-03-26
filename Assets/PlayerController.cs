@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    TMP_Text scoreText;
 
     [SerializeField]
     GameObject RearWheel;
@@ -41,8 +44,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Physics2D.OverlapCircle(FrontWheel.transform.position, 0.1f, checkpointLayer))
         {
-            score++;
-            print (score);
+            scoreText.text = "0";
         }
         if (Physics2D.OverlapCircle(Head.transform.position, 0.1f, groundLayer))
         {
