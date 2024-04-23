@@ -42,10 +42,6 @@ public class PlayerController : MonoBehaviour
             Head.GetComponent<Rigidbody2D>().gravityScale = 0.5f;
             wheelieForce = 10;
         }
-        if (Physics2D.OverlapCircle(FrontWheel.transform.position, 0.1f, checkpointLayer))
-        {
-            scoreText.text = "0";
-        }
         if (Physics2D.OverlapCircle(Head.transform.position, 0.1f, groundLayer))
         {
             SceneManager.LoadScene(1);
@@ -63,5 +59,15 @@ public class PlayerController : MonoBehaviour
         {
             holdingMouse = false;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        print("agr");
+        if (other.gameObject.tag == "Checkpoint")
+        {
+            score++;
+            scoreText.text = score.ToString();
+            print(score);
+        }    
     }
 }
